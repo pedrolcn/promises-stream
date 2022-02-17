@@ -2,16 +2,23 @@
   "name": "promises-stream",
   "version": "0.1.0",
   "description": "Transforms a list of promieses into an AsyncIterator of resolved values",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "example": "ts-node example.ts"
   },
   "author": "Pedro Nascimento <pedrolcn@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
   "devDependencies": {
     "@types/node": "^17.0.18",
-    "tslib": "^2.3.1",
+    "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
   }
 }

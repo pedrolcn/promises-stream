@@ -1,5 +1,4 @@
 import EventEmitter, { once } from "events";
-import { setTimeout } from 'timers/promises'
 
 export type FalliblePromiseResult<T> =
     { error: false, value: T } |
@@ -32,7 +31,7 @@ class YieldQueue<T> {
 
 }
 
-async function * toStream<T>(promises: Promise<T>[]): AsyncIterable<FalliblePromiseResult<T>> {
+export async function * toStream<T>(promises: Promise<T>[]): AsyncIterable<FalliblePromiseResult<T>> {
     const yieldQueue = new YieldQueue<FalliblePromiseResult<T>>();
     let pendingPromisesCount = promises.length;
 
@@ -49,17 +48,3 @@ async function * toStream<T>(promises: Promise<T>[]): AsyncIterable<FallibleProm
         yield result;
     }
 }
-
-
-async function main() {
-    const promises = Array.from({ length: 10 }, () => {
-        const delay = Math.floor(Math.random() * 1000);
-        return setTimeout(delay, delay);
-    });
-
-    for await (const val of toStream(promises)) {
-        console.log(val);
-    }
-}
-
-main();
