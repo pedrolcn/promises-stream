@@ -1,7 +1,7 @@
 {
   "name": "promises-stream",
   "version": "0.1.0",
-  "description": "Transforms a list of promieses into an AsyncIterator of resolved values",
+  "description": "Transforms a list of promieses into an AsyncIterator of settled values",
   "main": "build/index.js",
   "files": [
     "build"
